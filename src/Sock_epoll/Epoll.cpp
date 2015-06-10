@@ -6,6 +6,8 @@
  ************************************************************************/
 
 #include"Epoll.h"
+
+/*add a epoll ctl*/
 void Epoll::epoll_add_fd(int fd)
 {
 	struct epoll_event ev;
@@ -18,6 +20,7 @@ void Epoll::epoll_add_fd(int fd)
 	}
 }
 
+/*create a  epoll_create */
 Epoll::Epoll(int listenfd)          //初始化  create epoll
 	: m_listenfd(listenfd)
 {
@@ -30,7 +33,8 @@ Epoll::Epoll(int listenfd)          //初始化  create epoll
 	epoll_add_fd(listenfd);
 }
 
-void Epoll::epoll_loop()   //wait 函数
+/* the epoll_wait */
+void Epoll::epoll_loop()   
 {
 	int nready;
 	do{
@@ -48,6 +52,7 @@ void Epoll::epoll_loop()   //wait 函数
 	}else
 		m_ready = nready;
 }
+
 
 void Epoll::epoll_handle_fd(Pool_t &thp, MyConf &conf, Cache &cache)       //执行监听
 {
@@ -90,6 +95,8 @@ void Epoll::epoll_handle_fd(Pool_t &thp, MyConf &conf, Cache &cache)       //执
 	}
 }
 
+
+/*close epoll*/
 void Epoll::epoll_destroy()
 {
 	close(m_epoll_fd); //关闭监听

@@ -7,36 +7,42 @@
 
 #include"Cache.h"
 
+/*init a cacahe
+ * on begin read the file save to cache
+ * Create one pthread to handle write */
 Cache::Cache()
 {
 	read_from_file();
 	pthread_create(&m_ptid, NULL, cache_write, this);
 }
 
+
+/*detach the thread*/
 Cache::~Cache()
 {
 	pthread_detach(m_ptid);
 } 
 
+/*the func to wait and write*/
 void *Cache::cache_write(void *arg)
 {		
 	Cache *pt = static_cast<Cache*>(arg);
 
 	while(1){				
-			sleep(10000);
+			sleep(1000);
     		pt->write_to_file();
 		}
 }
 	
 
-
+/*get the map*/
 map<string, string> *Cache::is_mapped()
 {
 	
 	return 	&m_cache;
 }
 
-
+/*when write the map must add lock*/
 void Cache::write_to_file()
 {
 
@@ -53,7 +59,7 @@ void Cache::write_to_file()
 }
 
 
-
+/*read from_file save to cache_map*/
 void Cache::read_from_file()
 {
 	ifstream ifs("../data/hash_map_word.txt");

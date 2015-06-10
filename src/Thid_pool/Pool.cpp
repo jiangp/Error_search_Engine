@@ -8,7 +8,7 @@
 #include"Pool.h"
 
 
-
+/*init pool_t*/
 Pool_t::Pool_t(size_t queueSize, size_t threadsNum)
 	:m_empty(m_mutex),
 	m_full(m_mutex),
@@ -19,6 +19,8 @@ Pool_t::Pool_t(size_t queueSize, size_t threadsNum)
 
 }
 
+
+/*Create m_threadNum pthread */
 void Pool_t::start()
 {
 	m_isStarted = true;
@@ -32,32 +34,42 @@ void Pool_t::start()
 	}
 }
 
-void Pool_t::addTask(Task task)// add event
+
+/*add event if the size is more than m_queuesize 
+ * the add change to wait 
+ * lock the m_mutex befor push*/
+void Pool_t::addTask(Task task)
 {
 	MutexLockGuard lock(m_mutex);
 	while(m_queue.size() >= m_queueSize)
 		m_empty.wait();
-	m_queue.push(task); //add
-	m_full.signal();    //single -> wait
+	m_queue.push(task);
+	m_full.signal();
 }
 
-Task Pool_t::getTask() //handle event
+/*handle event if the queue is empty wait
+ *the getTask is wait 
+ * lock the m_nutex befor pop 
+ * of is empty senf a signal to m_empty*/
+Task Pool_t::getTask()
 {
 	MutexLockGuard lock(m_mutex);
 	while(m_queue.empty())
 		m_full.wait();
-	Task task = m_queue.front(); // handle
-	m_queue.pop();              //delete
-	m_empty.signal();        //single -> wait
+	Task task = m_queue.front(); 
+	m_queue.pop();          
+	m_empty.signal();        
 	return task;
 }
 
+
+
+/*execution the function getTask  */
 void Pool_t::runInThread()
 {
 	while(1)
 	{
-		Task task(getTask()); //取出 任务 
-		task.execute();	 //执行
-	
+		Task task(getTask()); 
+		task.execute();	
 	}
 }

@@ -6,6 +6,8 @@
  ************************************************************************/
 #include"Compare.h"
 
+/*the compare of priority_queue the dist small push on top
+ * if the dist equal the fre big push on top*/
 bool Compare::operator()(const Result &left, const Result &right)
 {
 	if(left.get_dist() == right.get_dist())

@@ -76,7 +76,7 @@ void Task::execute()
 
 
 
-/**/
+/*find the char from map and seach the subscrite of vector*/
 void Task::find_word_from_map()
 {
 	string word;
@@ -103,8 +103,10 @@ void Task::find_word_from_map()
 
 
 
-
-
+/*get the word from vector 
+ * calculation text distance
+ * is distance small 3 
+ * gave to Result*/
 void Task::satistic(const set<int> *m_set)
 {
 	set<int>::const_iterator i = m_set->begin();
@@ -135,7 +137,9 @@ void Task::satistic(const set<int> *m_set)
 
 
 
-
+/*calculation tow  word's Text distance
+ * is support English  Chinese utf-8
+ * */
 size_t Task::edit(const string &pstr1, size_t len1, const string &pstr2, size_t len2)
 {
 
@@ -180,13 +184,14 @@ size_t Task::edit(const string &pstr1, size_t len1, const string &pstr2, size_t 
 }
 
 
-
-
+/* Let the Result push in priority_queue*/
 void Task::get_result(Result &a)
 {
 	m_result.push(a);
 }
 
+
+/*get the msg from Priority_queue send to Client */
 void Task::send_msg()
 {
 	/*send one******************************************/
@@ -215,7 +220,9 @@ void Task::send_msg()
 	/*//Redis
 	 * r->set(msg, strr); */
 }	
-	
+
+
+
 	/*send more*****************************************
 
 	if(m_result.empty()){

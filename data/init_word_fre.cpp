@@ -23,7 +23,7 @@
 using namespace std;
 
 map<string, int> m_map;
-
+/*
 void get_dir(char *path);
 void init_word(char *path);
 
@@ -61,7 +61,7 @@ void get_dir(char *path)
 	}
 
 }
-
+*/
 void init_word(char *path)
 {
 	ifstream ifs(path);
@@ -99,7 +99,7 @@ void init_word(char *path)
 int main(int argc, char *argv[])
 {
 	ofstream ofs("word.txt");
-	get_dir(argv[1]);
+	init_word(argv[1]);
 	map<string, int>::iterator it = m_map.begin();
 	for(; it != m_map.end(); ++it)
 	{

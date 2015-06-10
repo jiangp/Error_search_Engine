@@ -25,9 +25,9 @@ class Cache
 	Mutex mutex;
 public:
 	Cache();
-        ~Cache();
+    ~Cache();
 	map<string, string> m_cache;
-	map<string, string > *is_mapped(/*const string &word*/);
+	map<string, string > *is_mapped();
 	void write_to_file();
 	void read_from_file();
 };
