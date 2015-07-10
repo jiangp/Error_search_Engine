@@ -14,11 +14,11 @@
 #include<time.h>
 #include<errno.h>
 #include<sys/epoll.h>
-#include"Pool.h"
-#include"InetAddress.h"
-#include"Socket.h"
-#include"SocketIO.h"
-#include"Epoll.h"
+#include"pool.h"
+#include"inetaddress.h"
+#include"socket.h"
+#include"socketIO.h"
+#include"epoll.h"
 //#include"redis.h"
 int main(int argc, char **argv)
 {

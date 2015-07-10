@@ -1,5 +1,5 @@
 /*************************************************************************
-	> File Name: ./include/Compare.h
+	> File Name: compare.h
 	> Author: Arwen
 	> Mail:745529725@qq.com 
 	> Created Time: Wed 01 Apr 2015 05:35:46 PM CST
@@ -10,7 +10,7 @@
 
 #include<string.h>
 #include<stdio.h>
-#include"Result.h"
+#include"result.h"
 
 class Compare //优先级队列 比较的类
 {

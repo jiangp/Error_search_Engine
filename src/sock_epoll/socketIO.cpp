@@ -1,11 +1,11 @@
 /*************************************************************************
-	> File Name: SocketIO.cpp
+	> File Name: socketIO.cpp
 	> Author: Arwen
 	> Mail:745529725@qq.com 
 	> Created Time: Sat 28 Mar 2015 07:33:52 PM CST
  ************************************************************************/
 
-#include"SocketIO.h"
+#include"socketIO.h"
 
 ssize_t SocketIO::readn(char *buf, size_t count)
 {

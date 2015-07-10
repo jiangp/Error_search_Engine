@@ -1,11 +1,11 @@
 /*************************************************************************
-	> File Name: ./src/Cache.cpp
+	> File Name: cache.cpp
 	> Author: Arwen
 	> Mail:745529725@qq.com 
 	> Created Time: Sun 05 Apr 2015 04:17:58 PM CST
  ************************************************************************/
 
-#include"Cache.h"
+#include"cache.h"
 
 /*init a cacahe
  * on begin read the file save to cache

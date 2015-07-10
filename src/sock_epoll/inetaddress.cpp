@@ -1,11 +1,11 @@
 /*************************************************************************
-	> File Name: InetAddress.cpp
+	> File Name: inetaddress.cpp
 	> Author: Arwen
 	> Mail:745529725@qq.com 
 	> Created Time: Fri 27 Mar 2015 05:30:11 PM CST
  ************************************************************************/
 
-#include"InetAddress.h"
+#include"inetaddress.h"
 #include<string.h>
 #include<stdio.h>
 #include<stdlib.h>

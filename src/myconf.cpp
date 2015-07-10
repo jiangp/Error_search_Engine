@@ -1,11 +1,11 @@
 /*************************************************************************
-	> File Name: MyConf.cpp
+	> File Name: myconf.cpp
 	> Author: Arwen
 	> Mail:745529725@qq.com 
 	> Created Time: Sun 29 Mar 2015 03:22:40 PM CST
  ************************************************************************/
 
-#include"MyConf.h"
+#include"myconf.h"
 #include<stdlib.h>
 
 using namespace std;

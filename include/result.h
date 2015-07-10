@@ -1,5 +1,5 @@
 /*************************************************************************
-	> File Name: ./include/Result.h
+	> File Name: result.h
 	> Author: Arwen
 	> Mail:745529725@qq.com 
 	> Created Time: Wed 01 Apr 2015 05:02:34 PM CST

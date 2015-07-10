@@ -1,11 +1,11 @@
 /*************************************************************************
-	> File Name: Epoll.cpp
+	> File Name: epoll.cpp
 	> Author: Arwen
 	> Mail:745529725@qq.com 
 	> Created Time: Tue 31 Mar 2015 09:56:43 AM CST
  ************************************************************************/
 
-#include"Epoll.h"
+#include"epoll.h"
 
 /*add a epoll ctl*/
 void Epoll::epoll_add_fd(int fd)

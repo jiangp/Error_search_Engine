@@ -1,5 +1,5 @@
 /*************************************************************************
-	> File Name: Socket.h
+	> File Name: socket.h
 	> Author: Arwen
 	> Mail:745529725@qq.com 
 	> Created Time: Fri 27 Mar 2015 09:49:41 PM CST
@@ -8,7 +8,7 @@
 #ifndef _SOCKET_H
 #define _SOCKET_H
 
-#include"InetAddress.h"
+#include"inetaddress.h"
 
 class Socket
 {

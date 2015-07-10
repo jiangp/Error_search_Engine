@@ -1,5 +1,5 @@
 /*************************************************************************
-	> File Name: MyConf.h
+	> File Name: myconf.h
 	> Author: Arwen
 	> Mail:745529725@qq.com 
 	> Created Time: Sun 29 Mar 2015 03:09:47 PM CST
@@ -17,7 +17,7 @@
 #include<set>
 #include<fstream>
 #include<sstream>
-#include"Noncopyable.h"
+#include"noncopyable.h"
 
 
 using namespace std;

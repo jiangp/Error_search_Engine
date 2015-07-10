@@ -1,11 +1,11 @@
 /*************************************************************************
-	> File Name: pthread_pool.cpp
+	> File Name: pthreadpool.cpp
 	> Author: Arwen
 	> Mail:745529725@qq.com 
 	> Created Time: Tue 24 Mar 2015 04:19:22 PM CST
  ************************************************************************/
 
-#include"pthread_pool.h"
+#include"thread.h"
 #include<assert.h>
 #include"mutex.h"
 

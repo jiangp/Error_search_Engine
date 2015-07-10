@@ -8,7 +8,7 @@
 #define _MUTEX_H
 #include<iostream>
 #include<pthread.h>
-#include"Noncopyable.h"
+#include"noncopyable.h"
 
 //use to testing pthread function return value
 #define TINY_CHECK(exp) \

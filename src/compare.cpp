@@ -1,10 +1,10 @@
 /*************************************************************************
-	> File Name: ./src/Compare.cpp
+	> File Name: compare.cpp
 	> Author: Arwen
 	> Mail:745529725@qq.com 
 	> Created Time: Wed 01 Apr 2015 05:39:55 PM CST
  ************************************************************************/
-#include"Compare.h"
+#include"compare.h"
 
 /*the compare of priority_queue the dist small push on top
  * if the dist equal the fre big push on top*/

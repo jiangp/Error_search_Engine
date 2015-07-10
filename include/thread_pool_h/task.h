@@ -14,10 +14,10 @@
 #include<vector>
 #include<set>
 #include<queue>
-#include"MyConf.h"
-#include"Result.h"
-#include"Compare.h"
-#include"Cache.h"
+#include"myconf.h"
+#include"result.h"
+#include"compare.h"
+#include"cache.h"
 //#include"redis.h"
 using namespace std;
 

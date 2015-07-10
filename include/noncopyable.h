@@ -1,5 +1,5 @@
 /*************************************************************************
-	> File Name: Noncopyable.h
+	> File Name: noncopyable.h
 	> Author: Arwen
 	> Mail:745529725@qq.com 
 	> Created Time: Tue 24 Mar 2015 05:38:37 PM CST

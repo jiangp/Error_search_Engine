@@ -1,11 +1,11 @@
 /*************************************************************************
-	> File Name: Pool.cpp
+	> File Name: pool.cpp
 	> Author: Arwen
 	> Mail:745529725@qq.com 
 	> Created Time: Thu 26 Mar 2015 11:53:04 AM CST
  ************************************************************************/
 
-#include"Pool.h"
+#include"pool.h"
 
 
 /*init pool_t*/

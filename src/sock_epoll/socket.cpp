@@ -1,10 +1,10 @@
 /*************************************************************************
-	> File Name: Socket.cpp
+	> File Name: socket.cpp
 	> Author: Arwen
 	> Mail:745529725@qq.com 
 	> Created Time: Fri 27 Mar 2015 10:23:01 PM CST
  ************************************************************************/
-#include"Socket.h"
+#include"socket.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>

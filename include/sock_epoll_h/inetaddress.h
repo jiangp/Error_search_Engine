@@ -1,5 +1,5 @@
 /*************************************************************************
-	> File Name: InetAddress.h
+	> File Name: inetaddress.h
 	> Author: Arwen
 	> Mail:745529725@qq.com 
 	> Created Time: Fri 27 Mar 2015 05:29:34 PM CST
@@ -10,7 +10,7 @@
 
 #include<string>
 #include<netinet/in.h>
-#include"Noncopyable.h"
+#include"noncopyable.h"
 
 typedef struct sockaddr SA;
 typedef struct sockaddr_in SAI;

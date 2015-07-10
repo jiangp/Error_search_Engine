@@ -1,5 +1,5 @@
 /*************************************************************************
-	> File Name: pthread_pool.h
+	> File Name: thread.h
 	> Author: Arwen
 	> Mail:745529725@qq.com 
 	> Created Time: Tue 24 Mar 2015 03:24:26 PM CST
@@ -7,7 +7,7 @@
 #ifndef _PTHREAD_POOL_H
 #define _PTHREAD_POOL_H
 
-#include"Noncopyable.h"
+#include"noncopyable.h"
 #include<functional>
 #include<pthread.h>
 

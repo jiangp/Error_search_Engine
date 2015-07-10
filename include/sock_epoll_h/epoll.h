@@ -1,5 +1,5 @@
 /*************************************************************************
-	> File Name: Epoll.h
+	> File Name: epoll.h
 	> Author: Arwen
 	> Mail:745529725@qq.com 
 	> Created Time: Tue 31 Mar 2015 10:00:52 AM CST
@@ -16,7 +16,7 @@
 #include<sys/socket.h>
 #include<sys/types.h>
 #include<string.h>
-#include"Pool.h"
+#include"pool.h"
 
 class Pool_t;
 

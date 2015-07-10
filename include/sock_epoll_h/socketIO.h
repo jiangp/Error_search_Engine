@@ -1,5 +1,5 @@
 /*************************************************************************
-	> File Name: SocketIO.h
+	> File Name: socketIO.h
 	> Author: Arwen
 	> Mail:745529725@qq.com 
 	> Created Time: Sat 28 Mar 2015 07:32:32 PM CST
@@ -7,7 +7,7 @@
 #ifndef SOCKIO_H
 #define SOCKIO_H
 
-#include"Noncopyable.h"
+#include"noncopyable.h"
 #include<sys/types.h>
 #include<unistd.h>
 #include<errno.h>
