@@ -17,9 +17,9 @@ MyConf::MyConf(const string &name)
 {
 	ifs.open(name.c_str());
 	string line;
-	while(ifs >> line)
-	{
+	while(ifs >> line){
 		unsigned int pos = line.find('=');
+		
 		if(pos == string::npos)
 			continue;
 		else{
@@ -40,27 +40,30 @@ void MyConf::save_to_vector()
 	ifstream ifs1 ;
 	ifstream ifs2 ;
 	map<string, string>::iterator iter = m_map.begin();
-	for(; iter != m_map.end(); ++iter)
-	{
+	
+	for(; iter != m_map.end(); ++iter){
 		string line;
+	
 		/*read the English*/
-		if(iter->first == "word_dict_path")
-		{
+		if(iter->first == "word_dict_path"){
 			ifs1.open(iter->second.c_str());
-			while(getline(ifs1, line))
-			{
+			
+			while(getline(ifs1, line)){
 				int pos = line.find(' ');
-				m_vec.push_back(pair<string, string>(line.substr(0,pos),(line.substr(pos + 1))));	
+				m_vec.push_back(pair<string, string>\
+						(line.substr(0,pos),(line.substr(pos + 1))));	
 			}
 		}
+		
 		/*read the chinese*/
-		if(iter ->first == "china_word_dict_path")
-		{
+		if(iter ->first == "china_word_dict_path"){
 			ifs2.open(iter->second.c_str());
+			
 			while(getline(ifs2, line)){
 
 				int pos = line.find(' ');
-				m_vec.push_back(pair<string, string>(line.substr(0,pos),(line.substr(pos + 1))));	
+				m_vec.push_back(pair<string, string>\
+						(line.substr(0,pos),(line.substr(pos + 1))));	
 			}
 		}
 			//test func***********************************************************************
@@ -84,18 +87,19 @@ void MyConf::save_to_vector()
  * */
 void MyConf::index_to_map()
 {
-	vector<pair<string, string> >::size_type iter = 0;
 	string key;
-	for(; iter != m_vec.size(); ++iter)
-	{
+	vector<pair<string, string> >::size_type iter = 0;
+	
+	for(; iter != m_vec.size(); ++iter){
 		string word = m_vec[iter].first;
 		size_t it = 0;
-		for(; it != word.size(); ++it)
-		{
+		for(; it != word.size(); ++it){
+			
 			if(word[it] & (1 << 7)){
 				key = word.substr(it, 3);
 				it += 2;
-			}else{
+			}
+			else{
 				key = word.substr(it, 1);
 			}
 			m_index[key].insert(iter);
@@ -125,7 +129,7 @@ string MyConf::get_IP()
 {
 	map<string, string>::iterator IP_pos;
 	IP_pos = m_map.find("IP");
-	return IP_pos ->second;
+	return IP_pos->second;
 }
 
 int MyConf::get_PORT()

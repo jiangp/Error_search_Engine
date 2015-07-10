@@ -238,4 +238,3 @@ int main(int argc, char* argv[])//exe  src_txt_dir  ripepage_filename  offset_fi
 	std::cout << "Over" << std::endl ;
 	return 0 ;
 }
-

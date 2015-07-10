@@ -66,4 +66,3 @@ int main(int argc, char **argv)
 	init.epoll_destroy();
 	return 0;
 }
-

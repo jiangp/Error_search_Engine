@@ -4,7 +4,7 @@ SRCS:=$(wildcard ./src/*.cpp) $(wildcard ./src/Sock_epoll/*.cpp) $(wildcard ./sr
 LIBS:= -lpthread
 CXX:=g++
 CXXFLAGS:= -Wall -g -std=c++11 -lpthread  -lhiredis  $(addprefix -I, $(INC_DIR) )
-EXE:=./bin/main
+EXE:=./bin/main.o
 $(EXE):$(SRCS)
 	$(CXX) -o $(EXE) $(SRCS) $(CXXFLAGS)
 
