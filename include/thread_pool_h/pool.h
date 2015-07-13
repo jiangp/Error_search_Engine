@@ -36,9 +36,8 @@ private:
 
 	size_t m_queueSize;
 	std::queue<Task> m_queue;
-
 	const size_t m_threadsNum;
-	std::vector<std::unique_ptr<Thread> > m_threads;//create Thread
+	std::vector<std::unique_ptr<Thread> > m_threads;  //create Thread
 	bool m_isStarted;
 };
 

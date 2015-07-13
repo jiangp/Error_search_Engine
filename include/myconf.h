@@ -12,6 +12,9 @@
 
 #include<iostream>
 #include<string>
+#include<stdio.h>
+#include<errno.h>
+#include<stdlib.h>
 #include<map>
 #include<vector>
 #include<set>
@@ -36,6 +39,9 @@ public:
 	map<string, string> &get_map();
 	string get_IP();
 	int get_PORT();
+	string get_word_path();
+	size_t get_queueSize();
+	size_t get_threadNum();
 	vector<pair<string, string>> *get_vec() { return &m_vec;}
 	map<string, set<int> > *get_index() {return &m_index; }
 };

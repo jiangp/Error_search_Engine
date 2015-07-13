@@ -24,12 +24,11 @@ Pool_t::Pool_t(size_t queueSize, size_t threadsNum)
 void Pool_t::start()
 {
 	m_isStarted = true;
-	for(size_t ix = 0; ix != m_threadsNum; ++ix)
-	{
+	for(size_t ix = 0; ix != m_threadsNum; ++ix){
 		m_threads.push_back(std::unique_ptr<Thread>(new Thread(std::bind(&Pool_t::runInThread, this))));
 	}
-	for(size_t ix = 0; ix != m_threadsNum; ++ix)
-	{
+
+	for(size_t ix = 0; ix != m_threadsNum; ++ix){
 		m_threads[ix] ->start();
 	}
 }
@@ -41,8 +40,9 @@ void Pool_t::start()
 void Pool_t::addTask(Task task)
 {
 	MutexLockGuard lock(m_mutex);
-	while(m_queue.size() >= m_queueSize)
+	while(m_queue.size() >= m_queueSize){
 		m_empty.wait();
+	}
 	m_queue.push(task);
 	m_full.signal();
 }
@@ -54,8 +54,9 @@ void Pool_t::addTask(Task task)
 Task Pool_t::getTask()
 {
 	MutexLockGuard lock(m_mutex);
-	while(m_queue.empty())
+	while(m_queue.empty()){
 		m_full.wait();
+	}
 	Task task = m_queue.front(); 
 	m_queue.pop();          
 	m_empty.signal();        
@@ -67,8 +68,7 @@ Task Pool_t::getTask()
 /*execution the function getTask  */
 void Pool_t::runInThread()
 {
-	while(1)
-	{
+	while(1){
 		Task task(getTask()); 
 		task.execute();	
 	}

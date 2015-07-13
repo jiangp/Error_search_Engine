@@ -19,17 +19,19 @@
 using namespace std;
 class Cache
 {
-	
+public:
+    ~Cache();
+	Cache(const string &word_path);
+	map<string, string> m_cache;
+	map<string, string> *is_mapped();
+	void write_to_file();
+	void read_from_file();
+
+private:
 	static void *cache_write(void *);
 	pthread_t m_ptid;
 	Mutex mutex;
-public:
-	Cache();
-    ~Cache();
-	map<string, string> m_cache;
-	map<string, string > *is_mapped();
-	void write_to_file();
-	void read_from_file();
+	const string m_path;
 };
 
 /*

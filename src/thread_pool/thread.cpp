@@ -1,5 +1,5 @@
 /*************************************************************************
-	> File Name: pthreadpool.cpp
+	> File Name: thread.cpp
 	> Author: Arwen
 	> Mail:745529725@qq.com 
 	> Created Time: Tue 24 Mar 2015 04:19:22 PM CST
@@ -11,13 +11,11 @@
 
 Thread::Thread(ThreadCallback callback)
 	: m_callback(std::move(callback)) 
-{ 
-}
+{}
 
 Thread::~Thread()
 {
-	if(m_isRunning)
-	{
+	if(m_isRunning){
 		TINY_CHECK(!pthread_detach(m_pthid));
 	}
 }
@@ -41,6 +39,6 @@ void Thread::join()
 void *Thread::runInThread(void *arg) 
 {
 	Thread *pt = static_cast<Thread*>(arg);
-	pt->m_callback();//calback
+	pt->m_callback();                 //calback
 	return NULL;
 }

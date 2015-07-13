@@ -5,14 +5,9 @@
 	> Created Time: Sun 29 Mar 2015 09:09:42 PM CST
  ************************************************************************/
 
-#include<string>
 #include<iostream>
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
 #include<unistd.h>
 #include<time.h>
-#include<errno.h>
 #include<sys/epoll.h>
 #include"pool.h"
 #include"inetaddress.h"
@@ -20,20 +15,26 @@
 #include"socketIO.h"
 #include"epoll.h"
 //#include"redis.h"
+
+
 int main(int argc, char **argv)
 {
+	if(argc < 2 ){
+		perror("No input file!"); 
+		exit(EXIT_FAILURE);
+	}
+	
+	
 	//conf
-	MyConf a(argv[1]);      //配置类
-	a.save_to_vector();
-	a.index_to_map();
+	MyConf conf(argv[1]);      //配置类
+
 	
 	//Cache                     //缓存
-	Cache cache;
+	Cache cache(conf.get_word_path());
 
 	/*//Redis                   //使用Redis缓存
 	 * Redis *r = new redis();
-	 * if(!r->connect("127.0.0.1", 6379))
-	 * {
+	 * if(!r->connect("127.0.0.1", 6379)){
 	 *		perror("connect error\n");
 	 *		return 0;
 	 * }
@@ -41,11 +42,11 @@ int main(int argc, char **argv)
 	 * */
 
 	//pool
-	Pool_t pool(10, 10);          //线程池
+	Pool_t pool(conf.get_queueSize(), conf.get_threadNum());          //线程池
 	pool.start();
 
 	//inetAddress
-	InetAddress addr(a.get_IP(), a.get_PORT()); //地址连接
+	InetAddress addr(conf.get_IP(), conf.get_PORT()); //地址连接
 	
 	//socket
 	int fd_listen;
@@ -58,10 +59,9 @@ int main(int argc, char **argv)
 	
 	Epoll init(fd_listen);       //监听函数
 
-	while(1)
-	{
+	while(1){
 		init.epoll_loop();
-		init.epoll_handle_fd(pool, a, cache); //r
+		init.epoll_handle_fd(pool, conf, cache); //redis
 	}
 	init.epoll_destroy();
 	return 0;

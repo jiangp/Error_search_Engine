@@ -16,6 +16,10 @@ using namespace std;
 MyConf::MyConf(const string &name)
 {
 	ifs.open(name.c_str());
+	if(!ifs.good()){
+		perror(" The conf file error!");
+		exit(EXIT_FAILURE);
+	}
 	string line;
 	while(ifs >> line){
 		unsigned int pos = line.find('=');
@@ -23,9 +27,12 @@ MyConf::MyConf(const string &name)
 		if(pos == string::npos)
 			continue;
 		else{
-			m_map.insert(pair<string, string>(line.substr(0,pos),(line.substr(pos + 1))));
+			m_map.insert(pair<string, string>\
+					(line.substr(0,pos),(line.substr(pos + 1))));
 		}
 	}
+	save_to_vector();
+	index_to_map();
 
 }
 
@@ -47,6 +54,11 @@ void MyConf::save_to_vector()
 		/*read the English*/
 		if(iter->first == "word_dict_path"){
 			ifs1.open(iter->second.c_str());
+	
+			if(!ifs1.good()){
+			perror(" The word_dict_path file error!");
+			exit(EXIT_FAILURE);
+			}
 			
 			while(getline(ifs1, line)){
 				int pos = line.find(' ');
@@ -59,6 +71,10 @@ void MyConf::save_to_vector()
 		if(iter ->first == "china_word_dict_path"){
 			ifs2.open(iter->second.c_str());
 			
+			if(!ifs2.good()){
+				perror(" The chinese_word_dict_path file error!");
+				exit(EXIT_FAILURE);
+			}
 			while(getline(ifs2, line)){
 
 				int pos = line.find(' ');
@@ -142,3 +158,28 @@ int MyConf::get_PORT()
 	return PORT;
 }
 
+string MyConf::get_word_path()
+{	
+	map<string, string>::iterator Word_path;
+	Word_path = m_map.find("word_path");
+	return Word_path->second;
+}
+
+size_t MyConf::get_queueSize()
+{
+	map<string, string>::iterator Queue_size;
+	Queue_size = m_map.find("queueSize");
+	size_t queuesize;
+	stringstream ss(Queue_size->second);
+	ss >> queuesize;
+	return queuesize;
+}
+size_t MyConf::get_threadNum()
+{
+	map<string, string>::iterator Thread_num;
+	Thread_num = m_map.find("threadNum");
+	size_t threadnum;
+	stringstream ss(Thread_num->second);
+	ss >> threadnum;
+	return threadnum;
+}

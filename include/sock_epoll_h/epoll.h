@@ -18,8 +18,6 @@
 #include<string.h>
 #include"pool.h"
 
-class Pool_t;
-
 class Epoll
 {
 private:
@@ -32,7 +30,7 @@ private:
 public:
 	Epoll(int listenfd);
 	void epoll_loop();
-	void epoll_handle_fd (Pool_t &thp,MyConf &conf, Cache &cache);
+	void epoll_handle_fd (Pool_t &thp, MyConf &conf, Cache &cache);
 	void epoll_destroy();
 	void epoll_add_fd(int fd);
 

@@ -21,7 +21,6 @@ public:
 	void join();
 private:
 	ThreadCallback m_callback;//callback func
-
 	static void *runInThread(void *);
 	pthread_t m_pthid;
 	bool m_isRunning;

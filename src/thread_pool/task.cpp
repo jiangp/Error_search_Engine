@@ -13,8 +13,7 @@
 std::size_t length(const std::string &str)
 {
 	std::size_t ilen = 0;
-	for(std::size_t index = 0; index != str.size(); ++index)
-	{
+	for(std::size_t index = 0; index != str.size(); ++index){
 		if(str[index] & ( 1 << 7 ))
 			index += 2;
 		++ilen;
@@ -30,7 +29,7 @@ std::size_t length(const std::string &str)
  * */
 	Task::Task(const std::string &msg, int sockfd, MyConf &conf, Cache &cache)
 	:m_msg(msg) ,
-	m_sockfd(sockfd), 
+	m_sockfd(sockfd),
 	m_ve(conf.get_vec()), 
 	m_idx(conf.get_index()),
 	m_ca(cache.is_mapped())
@@ -64,14 +63,14 @@ void Task::execute()
 
 	if(str != m_ca->end()){
 		write(m_sockfd, str->second.c_str(), (str->second).size());
-		std::cout << "+++++++++" << std::endl;
+		std::cout << "++++++++" << std::endl;
 		return ;
 	}
 
 	/*3.find from map_list*/
 	find_word_from_map();
 	send_msg();
-	std::cout << "------" << std::endl;
+	std::cout << "--------" << std::endl;
 }
 
 
@@ -81,20 +80,19 @@ void Task::find_word_from_map()
 {
 	string word;
 	size_t it = 0;
-	for(; it != m_msg.size(); ++it)
-	{	
+	for(; it != m_msg.size(); ++it){	
 
 		if(m_msg[it] & (1 << 7)){
 
 			word = m_msg.substr(it, 3);
 			it += 2;
-		}else{
+		}
+		else{
 			word = m_msg.substr(it, 1);
 		}
 
 		map<string, set<int> >::const_iterator iter = (*m_idx).find(word);
-		if(iter != (*m_idx).end())
-		{
+		if(iter != (*m_idx).end()){
 			Task::satistic(&(iter->second));
 		}				
 	}
@@ -110,8 +108,7 @@ void Task::find_word_from_map()
 void Task::satistic(const set<int> *m_set)
 {
 	set<int>::const_iterator i = m_set->begin();
-	for(; i != m_set->end(); ++i)
-	{
+	for(; i != m_set->end(); ++i){
 
 		pair<string, string> iter = (*m_ve)[*i];
 
@@ -150,29 +147,28 @@ size_t Task::edit(const string &pstr1, size_t len1, const string &pstr2, size_t 
 		dp[0][i] = i;
 	
 	string sublhs, subrhs;
-	for(size_t i = 1, lhs_i = 0; i <= len1; ++i, ++lhs_i)
-	{
+	for(size_t i = 1, lhs_i = 0; i <= len1; ++i, ++lhs_i){
 		if(pstr1[lhs_i] & (1 << 7)){
 			sublhs = pstr1.substr(lhs_i, 3);
 			lhs_i += 2;
-		}else{
+		}
+		else{
 			sublhs = pstr1.substr(lhs_i, 1);
 		}
 
-		for(size_t j = 1, rhs_j = 0; j <= len2; ++j, ++rhs_j)
-		{
+		for(size_t j = 1, rhs_j = 0; j <= len2; ++j, ++rhs_j){
 			if(pstr2[rhs_j] & (1 << 7)){
 				subrhs = pstr2.substr(rhs_j, 3);
 				rhs_j += 2;
-			}else{
+			}
+			else{
 				subrhs = pstr2.substr(rhs_j, 1);
 			}
 			
 
 			if(sublhs == subrhs)
 				dp[i][j] = dp[i - 1][j - 1] ;
-			else
-			{
+			else{
 				size_t t1 = dp[i-1][j];
 				t1 = t1 < dp[i][j-1] ? t1 : dp[i][j-1];
 				t1 = t1 < dp[i-1][j-1] ? t1 : dp[i-1][j-1];
@@ -200,7 +196,8 @@ void Task::send_msg()
 
 		strr = "no similar word!";
 		write(m_sockfd, strr.c_str(), strr.size());
-	}else{
+	}
+	else{
 
 		/*get Result from prioirty_queue*/
 		Result str = m_result.top();
