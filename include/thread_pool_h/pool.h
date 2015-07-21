@@ -27,9 +27,8 @@ public:
 	void addTask(Task task);// c++11
 	Task getTask();
 	void runInThread();
+
 private:
-
-
 	mutable Mutex m_mutex;
 	Condition m_empty;
 	Condition m_full;

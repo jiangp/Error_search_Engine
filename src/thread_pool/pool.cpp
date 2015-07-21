@@ -25,11 +25,12 @@ void Pool_t::start()
 {
 	m_isStarted = true;
 	for(size_t ix = 0; ix != m_threadsNum; ++ix){
-		m_threads.push_back(std::unique_ptr<Thread>(new Thread(std::bind(&Pool_t::runInThread, this))));
+		m_threads.push_back(std::unique_ptr<Thread>\
+				(new Thread(std::bind(&Pool_t::runInThread, this))));
 	}
 
 	for(size_t ix = 0; ix != m_threadsNum; ++ix){
-		m_threads[ix] ->start();
+		m_threads[ix] ->Threadstart();
 	}
 }
 

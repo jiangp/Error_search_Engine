@@ -17,8 +17,8 @@ public:
 	typedef std::function<void ()> ThreadCallback;
 	explicit Thread(ThreadCallback callback);
 	~Thread();
-	void start();
-	void join();
+	void Threadstart();
+	void Threadjoin();
 private:
 	ThreadCallback m_callback;//callback func
 	static void *runInThread(void *);

@@ -20,14 +20,14 @@ Thread::~Thread()
 	}
 }
 
-void Thread::start()
+void Thread::Threadstart()
 {
 	TINY_CHECK(!pthread_create(&m_pthid, NULL, runInThread, this));
 	m_isRunning = true;
 }
 
 
-void Thread::join()
+void Thread::Threadjoin()
 {
 	assert(m_isRunning);
 	TINY_CHECK(!pthread_join(m_pthid, NULL));
